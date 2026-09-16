@@ -181,7 +181,7 @@ export const PassCard: React.FC<PassCardProps> = ({ card, isStacked = false }) =
           </h3>
 
           {/* Capital Balance */}
-          <div className="mt-3 flex items-baseline space-x-2">
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <span className="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-white">
               {(card.approxBalance || 0).toLocaleString()}
             </span>
@@ -222,14 +222,14 @@ export const PassCard: React.FC<PassCardProps> = ({ card, isStacked = false }) =
         </div>
 
         {/* Card Actions Footer */}
-        <div className="pt-3.5 border-t border-white/[0.06] flex items-center justify-between gap-2.5">
+        <div className="pt-3.5 border-t border-white/[0.06] flex items-center justify-between gap-2 sm:gap-2.5">
           {/* Preservation Guide */}
           {program && program.rescueActions.length > 0 ? (
             <button
               onClick={() => setActiveRescueCard(card)}
-              className="flex-1 py-1.5 px-3 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition flex items-center justify-center space-x-1.5 cursor-pointer"
+              className="flex-1 min-h-[38px] py-1.5 px-2.5 sm:px-3 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition flex items-center justify-center space-x-1.5 cursor-pointer whitespace-nowrap"
             >
-              <Compass className="w-3.5 h-3.5 text-zinc-400" />
+              <Compass className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
               <span>Preservation</span>
             </button>
           ) : (
@@ -240,20 +240,20 @@ export const PassCard: React.FC<PassCardProps> = ({ card, isStacked = false }) =
           <button
             onClick={handleResetClock}
             disabled={justReset}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold transition flex items-center justify-center space-x-1.5 cursor-pointer shadow-sm ${
+            className={`flex-1 min-h-[38px] py-1.5 px-2.5 sm:px-3 rounded-lg text-xs font-semibold transition flex items-center justify-center space-x-1.5 cursor-pointer shadow-sm whitespace-nowrap ${
               justReset
                 ? 'bg-zinc-800 text-emerald-300 border border-zinc-700'
-                : 'bg-white hover:bg-zinc-100 text-zinc-950'
+                : 'bg-white hover:bg-zinc-100 text-zinc-950 active:scale-98'
             }`}
           >
             {justReset ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
+                <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span>Validity Extended</span>
               </>
             ) : (
               <>
-                <RotateCw className="w-3.5 h-3.5 text-zinc-700" />
+                <RotateCw className="w-3.5 h-3.5 text-zinc-700 shrink-0" />
                 <span>Renew Validity</span>
               </>
             )}

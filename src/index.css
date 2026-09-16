@@ -18,9 +18,34 @@ body {
   background-color: #09090b;
   color: #f4f4f5;
   min-height: 100vh;
+  min-height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* Safe area insets for iOS PWA Standalone Mode */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Classical luxury serif helper */

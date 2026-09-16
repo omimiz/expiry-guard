@@ -72,20 +72,20 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-xl bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-xl bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] max-h-[90dvh]">
         {/* Top Hairline Platinum Accent */}
         <div className="h-1 w-full bg-gradient-to-r from-zinc-500 via-white to-zinc-500" />
 
         {/* Advisory Header */}
-        <div className="p-6 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70">
-          <div>
+        <div className="p-5 sm:p-6 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70 gap-3">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center space-x-2 mb-1.5">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: brandColor }} />
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
+              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: brandColor }} />
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 truncate">
                 Perpetua Advisory · Capital Retention
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-serif-luxury font-bold text-white tracking-tight">
+            <h2 className="text-lg sm:text-2xl font-serif-luxury font-bold text-white tracking-tight">
               Safeguard {(card.approxBalance || 0).toLocaleString()} {pointUnit}
             </h2>
             <p className="text-xs text-zinc-400 mt-1">
@@ -94,16 +94,16 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer"
+            className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer shrink-0 min-w-[36px] min-h-[36px] flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Preservation Strategy List */}
-        <div className="p-6 space-y-4 overflow-y-auto flex-1">
+        <div className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400 mb-1 flex items-center space-x-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-zinc-300" />
+            <ShieldCheck className="w-3.5 h-3.5 text-zinc-300 shrink-0" />
             <span>Preservation Maneuvers</span>
           </div>
 
@@ -113,11 +113,11 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
                 key={idx}
                 className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition space-y-2.5"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-serif-luxury font-semibold text-white">
                     {action.title}
                   </span>
-                  {getEffortTag(action.effort)}
+                  <div className="shrink-0">{getEffortTag(action.effort)}</div>
                 </div>
 
                 <p className="text-xs text-zinc-400 leading-relaxed font-sans">
@@ -130,15 +130,15 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
                   </div>
                 )}
 
-                <div className="pt-2.5 border-t border-zinc-800/80 flex items-center justify-between">
+                <div className="pt-2.5 border-t border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <span className="text-[11px] text-zinc-400">
                     {action.actionHint || 'Extends full retention cycle'}
                   </span>
                   <button
                     onClick={() => handleRescueActionCompleted(action.title)}
-                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-750 text-white text-xs font-medium border border-zinc-700 transition flex items-center space-x-1.5 cursor-pointer"
+                    className="min-h-[36px] px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-750 text-white text-xs font-medium border border-zinc-700 transition flex items-center justify-center space-x-1.5 cursor-pointer shrink-0"
                   >
-                    <Check className="w-3 h-3 text-emerald-400" />
+                    <Check className="w-3 h-3 text-emerald-400 shrink-0" />
                     <span>Execute & Renew Validity</span>
                   </button>
                 </div>

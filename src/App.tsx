@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
   const [isBackupOpen, setIsBackupOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-zinc-800 selection:text-white antialiased">
+    <div className="min-h-screen min-h-[100dvh] bg-[#08080a] text-zinc-100 flex flex-col selection:bg-zinc-700 selection:text-white antialiased">
       {/* App Header */}
       <Header
         onOpenNotifications={() => setIsNotificationsOpen(true)}
@@ -34,7 +34,7 @@ const AppContent: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-5 sm:py-8 space-y-6">
         {/* Portfolio Aggregates & Category Selectors */}
         <SummaryBanner />
 
@@ -43,11 +43,11 @@ const AppContent: React.FC = () => {
       </main>
 
       {/* Private Banking Confidentiality Footer */}
-      <footer className="border-t border-zinc-850 bg-[#060608] mt-16 py-6 text-xs text-zinc-500">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="border-t border-white/[0.08] bg-[#060608] mt-12 sm:mt-16 py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-xs text-zinc-500">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <div className="flex items-center space-x-2 text-zinc-400">
             <Shield className="w-3.5 h-3.5 text-zinc-300" />
-            <span className="font-mono text-[11px]">
+            <span className="font-mono text-[11px] tracking-wide">
               PERPETUA PRIVATE CLIENT · Zero-Credential Architecture
             </span>
           </div>

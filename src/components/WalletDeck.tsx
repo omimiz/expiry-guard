@@ -1,5 +1,5 @@
-import React from 'react'
-import { Filter, ShieldCheck } from 'lucide-react'
+import React, { useState } from 'react'
+import { Filter, ShieldCheck, ChevronsUpDown } from 'lucide-react'
 import { useDeck } from '../context/DeckContext'
 import { PassCard } from './PassCard'
 import { LOYALTY_CATALOG } from '../data/loyaltyCatalog'
@@ -14,6 +14,9 @@ export const WalletDeck: React.FC = () => {
     viewMode,
     setIsDeckBuilderOpen
   } = useDeck()
+
+  const [activeCardId, setActiveCardId] = useState<string | null>(null)
+  const [isFanned, setIsFanned] = useState(false)
 
   // Filter cards
   const filteredCards = cards.filter((card) => {
@@ -111,19 +114,55 @@ export const WalletDeck: React.FC = () => {
     <div className="space-y-6">
       {viewMode === 'deck' ? (
         /* Stacked Wallet Deck Mode */
-        <div className="relative max-w-xl mx-auto pt-4 pb-16">
-          {sortedCards.map((card, idx) => (
-            <div
-              key={card.id}
-              className="transition-all duration-300 relative"
-              style={{
-                marginTop: idx === 0 ? '0px' : '-130px',
-                zIndex: idx + 10
+        <div className="relative max-w-xl mx-auto pt-2 pb-16">
+          <div className="flex items-center justify-between px-2 mb-3 text-xs text-zinc-400">
+            <span className="font-mono text-[11px] tracking-wide">
+              {isFanned ? 'Fanned View · Complete Access' : 'Stacked Folio · Tap any asset to focus'}
+            </span>
+            <button
+              onClick={() => {
+                setIsFanned(!isFanned)
+                setActiveCardId(null)
               }}
+              className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 transition cursor-pointer text-[11px] font-medium"
             >
-              <PassCard card={card} isStacked={true} />
-            </div>
-          ))}
+              <ChevronsUpDown className="w-3 h-3 text-zinc-400" />
+              <span>{isFanned ? 'Compact Stack' : 'Fan All Cards'}</span>
+            </button>
+          </div>
+
+          <div className="relative">
+            {sortedCards.map((card, idx) => {
+              const isSelected = activeCardId === card.id
+              const marginTop = isFanned
+                ? '16px'
+                : idx === 0
+                ? '0px'
+                : isSelected
+                ? '24px'
+                : '-115px'
+
+              return (
+                <div
+                  key={card.id}
+                  onClick={() => {
+                    if (!isFanned) {
+                      setActiveCardId(isSelected ? null : card.id)
+                    }
+                  }}
+                  className={`transition-all duration-300 relative cursor-pointer ${
+                    isSelected ? 'ring-1 ring-white/30 rounded-2xl scale-[1.01] mb-6' : ''
+                  }`}
+                  style={{
+                    marginTop: idx === 0 ? '0px' : marginTop,
+                    zIndex: isSelected ? 40 : idx + 10
+                  }}
+                >
+                  <PassCard card={card} isStacked={!isFanned} />
+                </div>
+              )
+            })}
+          </div>
         </div>
       ) : (
         /* Grid Layout Mode */

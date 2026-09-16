@@ -41,16 +41,16 @@ export const EditCardModal: React.FC<EditCardModalProps> = ({ card, onClose }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-sm bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-sm bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] max-h-[90dvh]">
         {/* Top Platinum Accent */}
         <div className="h-1 w-full bg-gradient-to-r from-zinc-500 via-white to-zinc-500" />
 
         {/* Header */}
-        <div className="p-5 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70">
-          <div>
+        <div className="p-5 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70 gap-2">
+          <div className="min-w-0">
             <h3 className="text-sm font-serif-luxury font-semibold text-white flex items-center space-x-2">
-              <Edit2 className="w-3.5 h-3.5 text-zinc-400" />
-              <span>Modify {programName}</span>
+              <Edit2 className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+              <span className="truncate">Modify {programName}</span>
             </h3>
             <p className="text-xs text-zinc-400 mt-0.5">
               Update capital balance or qualifying activity
@@ -58,7 +58,7 @@ export const EditCardModal: React.FC<EditCardModalProps> = ({ card, onClose }) =
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer"
+            className="p-1.5 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer shrink-0 min-w-[36px] min-h-[36px] flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
