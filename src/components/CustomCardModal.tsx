@@ -41,52 +41,52 @@ export const CustomCardModal: React.FC<CustomCardModalProps> = ({ isOpen, onClos
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-slate-950 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-md bg-[#111114] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+        <div className="p-5 border-b border-zinc-800/80 flex items-start justify-between">
           <div>
-            <h3 className="text-lg font-bold text-white flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
+            <h3 className="text-sm font-semibold text-white flex items-center space-x-2">
+              <Sparkles className="w-3.5 h-3.5 text-zinc-400" />
               <span>Add Custom Program</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Add any local gym, regional airline, or supermarket reward scheme
+            <p className="text-xs text-zinc-400 mt-0.5">
+              Add any local gym, regional airline, or retailer scheme
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="p-1 rounded-lg text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800 transition cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
           <div>
-            <label className="text-xs font-semibold text-slate-300 block mb-1">
-              Program / Scheme Name
+            <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
+              Program Name
             </label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Fitness First Points, Local Grocery Rewards"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              placeholder="e.g. Local Co-op Points"
+              className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
+              <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
                 Category
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as Category)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600 cursor-pointer"
               >
                 <option value="retail">Retail</option>
                 <option value="dining">Dining</option>
@@ -97,25 +97,25 @@ export const CustomCardModal: React.FC<CustomCardModalProps> = ({ isOpen, onClos
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
-                Expiration Policy
+              <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
+                Policy Rule
               </label>
               <select
                 value={policyType}
                 onChange={(e) => setPolicyType(e.target.value as PolicyType)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600 cursor-pointer"
               >
                 <option value="rolling_inactivity">Rolling Inactivity</option>
-                <option value="fixed_calendar">End of Calendar Year</option>
-                <option value="fixed_tenure">Fixed Validity from Date</option>
-                <option value="no_expiry">Never Expires</option>
+                <option value="fixed_calendar">Calendar Year-End</option>
+                <option value="fixed_tenure">Fixed Validity Period</option>
+                <option value="no_expiry">No Expiry</option>
               </select>
             </div>
           </div>
 
           {policyType !== 'no_expiry' && (
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
+              <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
                 Validity Window (Months)
               </label>
               <input
@@ -124,65 +124,65 @@ export const CustomCardModal: React.FC<CustomCardModalProps> = ({ isOpen, onClos
                 max="120"
                 value={validityMonths}
                 onChange={(e) => setValidityMonths(parseInt(e.target.value) || 12)}
-                className="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600"
               />
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
-                Approximate Balance
+              <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
+                Balance
               </label>
               <input
                 type="number"
                 value={balance}
                 onChange={(e) => setBalance(e.target.value)}
-                placeholder="e.g. 5000"
-                className="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                placeholder="5000"
+                className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-slate-300 block mb-1">
-                Last Activity Date
+              <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
+                Last Activity
               </label>
               <input
                 type="date"
                 required
                 value={activityDate}
                 onChange={(e) => setActivityDate(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                className="w-full px-3 py-1.5 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-slate-300 block mb-1">
-              Notes (Optional)
+            <label className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 block mb-1">
+              Note (Optional)
             </label>
             <input
               type="text"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="e.g. Membership ID or goal reward"
-              className="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              placeholder="e.g. Card number or tier"
+              className="w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white focus:outline-none focus:border-zinc-600"
             />
           </div>
 
-          <div className="pt-3 border-t border-slate-800 flex items-center justify-end space-x-2.5">
+          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-end space-x-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white text-xs font-semibold cursor-pointer"
+              className="px-3.5 py-1.5 rounded-lg bg-zinc-900 text-zinc-400 hover:text-white text-xs font-medium cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/30 transition cursor-pointer"
+              className="px-4 py-1.5 rounded-lg bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold shadow-sm transition cursor-pointer"
             >
-              Add to Deck
+              Add Card
             </button>
           </div>
         </form>

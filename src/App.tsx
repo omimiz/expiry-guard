@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
   const [isBackupOpen, setIsBackupOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-rose-500 selection:text-white">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-zinc-800 selection:text-white antialiased">
       {/* App Header */}
       <Header
         onOpenNotifications={() => setIsNotificationsOpen(true)}
@@ -34,7 +34,7 @@ const AppContent: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {/* Metric Aggregates & Filters */}
         <SummaryBanner />
 
@@ -42,19 +42,17 @@ const AppContent: React.FC = () => {
         <WalletDeck />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950/80 mt-16 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      {/* Minimal Footer */}
+      <footer className="border-t border-zinc-800/60 bg-[#09090b] mt-16 py-6 text-xs text-zinc-500">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
-            <Lock className="w-4 h-4 text-emerald-400" />
-            <span>
-              <strong>Zero-Credential Guarantee:</strong> No passwords or logins are ever collected or transmitted.
-            </span>
+            <Lock className="w-3.5 h-3.5 text-zinc-400" />
+            <span>Zero-Credential Architecture · No logins or passwords stored.</span>
           </div>
-          <div className="flex items-center space-x-4">
-            <span>Deterministic Program Decay Rules</span>
-            <span>•</span>
-            <span>PWA & Offline Ready</span>
+          <div className="flex items-center space-x-3 text-[11px] text-zinc-400">
+            <span>Deterministic Decay Rules</span>
+            <span>·</span>
+            <span>Local-First PWA</span>
           </div>
         </div>
       </footer>

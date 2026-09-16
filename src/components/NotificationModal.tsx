@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { X, Bell, AlertTriangle, Clock, Send } from 'lucide-react'
+import { X, Bell, Clock, Send } from 'lucide-react'
 import { useDeck } from '../context/DeckContext'
 import { LOYALTY_CATALOG } from '../data/loyaltyCatalog'
 import {
@@ -32,15 +32,15 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
     const res = await requestNotificationPermission()
     setPerm(res)
     if (res === 'granted') {
-      sendLocalNotification('🔔 ExpiryGuard Notifications Enabled', {
-        body: 'You will receive proactive alerts 60d, 14d, and 48h before any loyalty points expire.'
+      sendLocalNotification('ExpiryGuard Alerts Active', {
+        body: 'You will receive notifications at 60d, 14d, and 48h before points expire.'
       })
     }
   }
 
   const handleSendTest = () => {
-    const success = sendLocalNotification('🛡️ ExpiryGuard Test Alert', {
-      body: '⚠️ Emirates Skywards: 45,000 miles expiring in 14 days! Tap to review rescue actions.',
+    const success = sendLocalNotification('ExpiryGuard Test Alert', {
+      body: 'Emirates Skywards: points expiring in 14 days. Review rescue guide.',
       tag: 'expiry-test'
     })
     setTestSent(true)
@@ -51,151 +51,137 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-xl bg-slate-950 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#111114] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
         {/* Header */}
-        <div className="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+        <div className="p-5 border-b border-zinc-800/80 flex items-start justify-between">
           <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center">
-              <Bell className="w-5 h-5 text-indigo-400" />
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+              <Bell className="w-4 h-4 text-zinc-300" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Loss Prevention Alert Schedule</h3>
-              <p className="text-xs text-slate-400">Proactive Web Push & local alert triggers</p>
+              <h3 className="text-sm font-semibold text-white">Alert Schedule & Reminders</h3>
+              <p className="text-xs text-zinc-400">Deterministic local notification cadence</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="p-1 rounded-lg text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6 overflow-y-auto flex-1">
+        <div className="p-5 sm:p-6 space-y-5 overflow-y-auto flex-1">
           {/* Permission Status Box */}
-          <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-3">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-bold text-slate-300">Browser Permission:</span>
-                <span
-                  className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                    perm === 'granted'
-                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                      : perm === 'denied'
-                      ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                      : 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                  }`}
-                >
-                  {perm === 'granted' ? 'Active & Ready' : perm === 'denied' ? 'Blocked in Browser' : 'Permission Required'}
+                <span className="text-xs font-medium text-zinc-300">Browser Permission:</span>
+                <span className="text-xs text-zinc-400 font-mono">
+                  {perm === 'granted' ? 'Granted' : perm === 'denied' ? 'Blocked' : 'Not Requested'}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1">
-                Web Push notifications run locally in your browser. No emails, no phone numbers, zero tracking.
+              <p className="text-[11px] text-zinc-400 mt-0.5">
+                Local-first notifications. No emails, phone numbers, or third-party servers.
               </p>
             </div>
 
-            <div className="flex items-center space-x-2 shrink-0">
+            <div>
               {perm !== 'granted' ? (
                 <button
                   onClick={handleRequestPermission}
-                  className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold transition cursor-pointer"
                 >
-                  Enable Alerts
+                  Enable
                 </button>
               ) : (
                 <button
                   onClick={handleSendTest}
-                  className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center space-x-1.5 transition cursor-pointer"
+                  className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-medium border border-zinc-700/60 transition flex items-center space-x-1.5 cursor-pointer"
                 >
-                  <Send className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>{testSent ? 'Sent!' : 'Test Alert'}</span>
+                  <Send className="w-3 h-3 text-zinc-400" />
+                  <span>{testSent ? 'Sent' : 'Test'}</span>
                 </button>
               )}
             </div>
           </div>
 
           {/* Trigger Cadence Overview */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Autonomous Reminder Cadence
-            </h4>
+          <div className="space-y-2">
+            <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">
+              Reminder Cadence
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                <div className="text-xs font-bold text-amber-400 flex items-center space-x-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>60 Days Prior</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/80">
+                <div className="text-xs font-medium text-amber-300 flex items-center space-x-1">
+                  <Clock className="w-3 h-3" />
+                  <span>60 Days</span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">
-                  Gentle heads-up with low-effort rescue recommendations (e.g. dining or partner purchase).
-                </p>
+                <p className="text-[11px] text-zinc-400 mt-1">Gentle notice with low-effort partner tips.</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                <div className="text-xs font-bold text-rose-400 flex items-center space-x-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5" />
-                  <span>14 Days Prior</span>
+              <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/80">
+                <div className="text-xs font-medium text-rose-300 flex items-center space-x-1">
+                  <Clock className="w-3 h-3" />
+                  <span>14 Days</span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">
-                  High-urgency notice advising instant action like 1,000 pt transfer or micro-purchase.
-                </p>
+                <p className="text-[11px] text-zinc-400 mt-1">High-priority warning for immediate action.</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                <div className="text-xs font-bold text-red-500 flex items-center space-x-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5" />
-                  <span>48 Hours Prior</span>
+              <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/80">
+                <div className="text-xs font-medium text-zinc-300 flex items-center space-x-1">
+                  <Clock className="w-3 h-3" />
+                  <span>48 Hours</span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">
-                  Final emergency call to burn points on shopping vouchers or charity donations before forfeiture.
-                </p>
+                <p className="text-[11px] text-zinc-400 mt-1">Final reminder before point expiration.</p>
               </div>
             </div>
           </div>
 
-          {/* Computed Upcoming Milestones */}
-          <div className="space-y-2.5">
-            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Upcoming Trigger Milestones For Your Deck
-            </h4>
+          {/* Upcoming Milestones */}
+          <div className="space-y-2">
+            <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">
+              Upcoming Milestones ({upcomingAlerts.filter((a) => !a.isPast).length})
+            </div>
 
             {upcomingAlerts.length > 0 ? (
-              <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
+              <div className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
                 {upcomingAlerts
                   .filter((a) => !a.isPast)
                   .slice(0, 6)
                   .map((alert, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between text-xs"
+                      className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800/70 flex items-center justify-between text-xs"
                     >
                       <div>
-                        <div className="font-semibold text-white">{alert.programName}</div>
-                        <div className="text-[11px] text-slate-400">
-                          {alert.triggerType.replace('_', ' ')} alert: {alert.rescueTip}
-                        </div>
+                        <span className="font-medium text-zinc-200">{alert.programName}</span>
+                        <span className="text-zinc-400 ml-2 text-[11px]">
+                          ({alert.triggerType.replace('_', ' ')})
+                        </span>
                       </div>
-                      <span className="text-[11px] font-mono font-semibold px-2 py-1 rounded bg-slate-800 text-indigo-300 shrink-0 ml-2">
+                      <span className="text-[11px] font-mono text-zinc-400">
                         {alert.scheduledFor}
                       </span>
                     </div>
                   ))}
               </div>
             ) : (
-              <div className="p-4 rounded-xl bg-slate-900 text-center text-xs text-slate-400">
-                All tracked cards are currently immortal or outside active alert windows.
+              <div className="p-4 rounded-lg bg-zinc-900/40 text-center text-xs text-zinc-400">
+                No active milestones pending.
               </div>
             )}
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-900/60 flex items-center justify-end">
+        <div className="p-4 border-t border-zinc-800/80 bg-zinc-950 flex items-center justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition cursor-pointer"
           >
             Close
           </button>

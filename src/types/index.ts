@@ -59,3 +59,4 @@ export interface ExpirationCalculation {
 export type SortOption = 'urgency' | 'balance_desc' | 'balance_asc' | 'name' | 'category'
 
 export type FilterStatus = 'all' | 'urgent' | 'healthy' | 'expired'
+

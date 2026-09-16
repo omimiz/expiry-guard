@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sparkles, Filter, Inbox } from 'lucide-react'
+import { Filter, CreditCard } from 'lucide-react'
 import { useDeck } from '../context/DeckContext'
 import { PassCard } from './PassCard'
 import { LOYALTY_CATALOG } from '../data/loyaltyCatalog'
@@ -47,13 +47,12 @@ export const WalletDeck: React.FC = () => {
 
     switch (sortBy) {
       case 'urgency': {
-        // Expired or Critical first, then Warning, then Healthy, then Immortal
         const getRank = (status: string, days: number) => {
           if (status === 'critical') return 1000 - days
           if (status === 'warning') return 5000 - days
           if (status === 'healthy') return 10000 - days
-          if (status === 'expired') return 100 // show expired near top or bottom
-          return 50000 // immortal
+          if (status === 'expired') return 100
+          return 50000
         }
         return getRank(expA.status, expA.daysRemaining) - getRank(expB.status, expB.daysRemaining)
       }
@@ -78,22 +77,21 @@ export const WalletDeck: React.FC = () => {
 
   if (cards.length === 0) {
     return (
-      <div className="py-20 px-4 text-center rounded-3xl bg-slate-900/40 border border-dashed border-slate-800 space-y-4 max-w-xl mx-auto">
-        <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mx-auto text-indigo-400">
-          <Inbox className="w-8 h-8" />
+      <div className="py-24 px-4 text-center rounded-2xl bg-zinc-900/30 border border-dashed border-zinc-800 space-y-4 max-w-lg mx-auto">
+        <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto text-zinc-400">
+          <CreditCard className="w-5 h-5 text-zinc-400 stroke-[1.5]" />
         </div>
         <div className="space-y-1">
-          <h3 className="text-xl font-bold text-white">Your Wallet Deck is Empty</h3>
-          <p className="text-sm text-slate-400">
-            Start protecting your rewards wealth in 60 seconds with zero passwords.
+          <h3 className="text-base font-semibold text-white">Wallet Deck is Empty</h3>
+          <p className="text-xs text-zinc-400">
+            Add loyalty schemes to monitor expiration dates without credentials.
           </p>
         </div>
         <button
           onClick={() => setIsDeckBuilderOpen(true)}
-          className="inline-flex items-center space-x-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold text-sm shadow-xl shadow-rose-600/30 hover:shadow-rose-600/50 transition cursor-pointer active:scale-95"
+          className="inline-flex items-center px-4 py-2 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs shadow-sm transition cursor-pointer"
         >
-          <Sparkles className="w-4 h-4" />
-          <span>Launch 60-Second Deck Builder</span>
+          <span>Add Your First Card</span>
         </button>
       </div>
     )
@@ -101,38 +99,37 @@ export const WalletDeck: React.FC = () => {
 
   if (sortedCards.length === 0) {
     return (
-      <div className="py-16 text-center rounded-3xl bg-slate-900/40 border border-slate-800 space-y-3">
-        <Filter className="w-8 h-8 text-slate-500 mx-auto" />
-        <h4 className="text-base font-semibold text-white">No loyalty cards match this filter</h4>
-        <p className="text-xs text-slate-400">Try switching your category or urgency filter above.</p>
+      <div className="py-16 text-center rounded-2xl bg-zinc-900/30 border border-zinc-800 space-y-2">
+        <Filter className="w-6 h-6 text-zinc-500 mx-auto" />
+        <h4 className="text-xs font-medium text-zinc-300">No programs match this filter</h4>
+        <p className="text-[11px] text-zinc-500">Switch category or status filter to see cards.</p>
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      {/* Cards View Rendering */}
       {viewMode === 'deck' ? (
         /* Stacked Wallet Deck Mode */
-        <div className="relative max-w-2xl mx-auto pt-6 pb-20">
+        <div className="relative max-w-xl mx-auto pt-4 pb-16">
           {sortedCards.map((card, idx) => (
             <div
               key={card.id}
-              className="transition-all duration-300 relative cursor-pointer"
+              className="transition-all duration-300 relative"
               style={{
-                marginTop: idx === 0 ? '0px' : '-160px',
+                marginTop: idx === 0 ? '0px' : '-130px',
                 zIndex: idx + 10
               }}
             >
-              <PassCard card={card} index={idx} isStacked={true} />
+              <PassCard card={card} isStacked={true} />
             </div>
           ))}
         </div>
       ) : (
         /* Grid Layout Mode */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {sortedCards.map((card, idx) => (
-            <PassCard key={card.id} card={card} index={idx} isStacked={false} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {sortedCards.map((card) => (
+            <PassCard key={card.id} card={card} isStacked={false} />
           ))}
         </div>
       )}

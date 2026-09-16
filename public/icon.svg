@@ -39,3 +39,4 @@
   <circle cx="256" cy="300" r="44" fill="#090D16" fill-opacity="0.8" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="4" />
   <path d="M256 276 V302 L274 314" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
+
