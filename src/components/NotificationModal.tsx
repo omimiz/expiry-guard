@@ -52,24 +52,24 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-gradient-to-b from-[#121216] to-[#0a0a0d] border border-[#c5a880]/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
-        {/* Top Hairline Accent */}
-        <div className="h-1 w-full bg-gradient-to-r from-[#d4af37] via-[#f3e7d3] to-[#aa823e]" />
+      <div className="relative w-full max-w-lg bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
+        {/* Top Platinum Accent */}
+        <div className="h-1 w-full bg-gradient-to-r from-zinc-500 via-white to-zinc-500" />
 
         {/* Header */}
-        <div className="p-5 border-b border-[#c5a880]/15 flex items-start justify-between bg-[#0e0e12]/80">
+        <div className="p-5 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#1a1815] border border-[#c5a880]/30 flex items-center justify-center">
-              <Bell className="w-4 h-4 text-[#d4af37]" />
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+              <Bell className="w-4 h-4 text-zinc-300" />
             </div>
             <div>
-              <h3 className="text-sm font-serif-luxury font-semibold text-[#f3e7d3]">Private Reminder Cadence</h3>
+              <h3 className="text-sm font-serif-luxury font-semibold text-white">Private Reminder Cadence</h3>
               <p className="text-xs text-zinc-400">Autonomous notifications delivered strictly to this device</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-500 hover:text-[#f3e7d3] hover:bg-[#1a1916] transition cursor-pointer"
+            className="p-1 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -78,11 +78,11 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
         {/* Content */}
         <div className="p-5 sm:p-6 space-y-5 overflow-y-auto flex-1">
           {/* Permission Status */}
-          <div className="p-4 rounded-xl bg-[#111115] border border-[#c5a880]/15 flex items-center justify-between gap-3">
+          <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-center justify-between gap-3">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs font-medium text-[#e5d3b3]">Device Status:</span>
-                <span className="text-xs font-mono text-[#d4af37]">
+                <span className="text-xs font-medium text-zinc-200">Device Status:</span>
+                <span className="text-xs font-mono text-white">
                   {perm === 'granted' ? 'Active & Encrypted' : perm === 'denied' ? 'Disabled' : 'Action Required'}
                 </span>
               </div>
@@ -95,16 +95,16 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
               {perm !== 'granted' ? (
                 <button
                   onClick={handleRequestPermission}
-                  className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#aa823e] text-[#0d0c0a] text-xs font-semibold shadow-sm transition cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg bg-white text-zinc-950 text-xs font-semibold shadow-sm transition cursor-pointer hover:bg-zinc-100"
                 >
                   Authorize
                 </button>
               ) : (
                 <button
                   onClick={handleSendTest}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#1a1815] hover:bg-[#221f1a] text-[#f3e7d3] text-xs font-medium border border-[#c5a880]/30 transition flex items-center space-x-1.5 cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-750 text-white text-xs font-medium border border-zinc-700 transition flex items-center space-x-1.5 cursor-pointer"
                 >
-                  <Send className="w-3 h-3 text-[#d4af37]" />
+                  <Send className="w-3 h-3 text-zinc-300" />
                   <span>{testSent ? 'Dispatched' : 'Test Alert'}</span>
                 </button>
               )}
@@ -113,29 +113,29 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
 
           {/* Trigger Cadence Overview */}
           <div className="space-y-2">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]">
+            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
               Notification Cadence
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <div className="p-3 rounded-lg bg-[#111115] border border-[#c5a880]/15">
-                <div className="text-xs font-serif-luxury font-semibold text-[#f3e7d3] flex items-center space-x-1">
-                  <Clock className="w-3 h-3 text-[#d4af37]" />
+              <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+                <div className="text-xs font-serif-luxury font-semibold text-white flex items-center space-x-1">
+                  <Clock className="w-3 h-3 text-zinc-300" />
                   <span>60 Days</span>
                 </div>
                 <p className="text-[11px] text-zinc-400 mt-1 font-sans">Strategic advance memo for low-effort partner spend.</p>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#111115] border border-[#c5a880]/15">
-                <div className="text-xs font-serif-luxury font-semibold text-[#f3e7d3] flex items-center space-x-1">
+              <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+                <div className="text-xs font-serif-luxury font-semibold text-white flex items-center space-x-1">
                   <Clock className="w-3 h-3 text-rose-400" />
                   <span>14 Days</span>
                 </div>
                 <p className="text-[11px] text-zinc-400 mt-1 font-sans">High-urgency notice advising transfer or concierge spend.</p>
               </div>
 
-              <div className="p-3 rounded-lg bg-[#111115] border border-[#c5a880]/15">
-                <div className="text-xs font-serif-luxury font-semibold text-[#f3e7d3] flex items-center space-x-1">
+              <div className="p-3 rounded-lg bg-zinc-900/60 border border-zinc-800">
+                <div className="text-xs font-serif-luxury font-semibold text-white flex items-center space-x-1">
                   <Clock className="w-3 h-3 text-red-500" />
                   <span>48 Hours</span>
                 </div>
@@ -146,7 +146,7 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
 
           {/* Upcoming Milestones */}
           <div className="space-y-2">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]">
+            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
               Pending Milestones ({upcomingAlerts.filter((a) => !a.isPast).length})
             </div>
 
@@ -158,22 +158,22 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
                   .map((alert, idx) => (
                     <div
                       key={idx}
-                      className="p-2.5 rounded-lg bg-[#111115] border border-[#c5a880]/10 flex items-center justify-between text-xs font-mono"
+                      className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 flex items-center justify-between text-xs font-mono"
                     >
                       <div>
-                        <span className="text-[#f3e7d3] font-serif-luxury text-xs">{alert.programName}</span>
+                        <span className="text-white font-serif-luxury text-xs">{alert.programName}</span>
                         <span className="text-zinc-500 ml-2 text-[10px]">
                           ({alert.triggerType.replace('_', ' ')})
                         </span>
                       </div>
-                      <span className="text-[11px] text-[#c5a880]">
+                      <span className="text-[11px] text-zinc-300">
                         {alert.scheduledFor}
                       </span>
                     </div>
                   ))}
               </div>
             ) : (
-              <div className="p-4 rounded-lg bg-[#111115] text-center text-xs text-zinc-400">
+              <div className="p-4 rounded-lg bg-zinc-900/40 text-center text-xs text-zinc-400">
                 All tracked assets are within secure retention windows.
               </div>
             )}
@@ -181,10 +181,10 @@ export const NotificationModal: React.FC<NotificationModalProps> = ({ isOpen, on
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#c5a880]/15 bg-[#0a0a0d] flex items-center justify-end">
+        <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex items-center justify-end">
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/20 text-xs font-medium text-[#c5a880] hover:text-[#f3e7d3] transition cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-400 hover:text-white transition cursor-pointer"
           >
             Close
           </button>

@@ -60,43 +60,43 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, onOpenBacku
   }
 
   return (
-    <header className="border-b border-[#c5a880]/15 bg-[#08080a]/90 backdrop-blur-md sticky top-0 z-30">
+    <header className="border-b border-white/[0.08] bg-zinc-950/80 backdrop-blur-md sticky top-0 z-30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center space-x-3.5">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#1a1815] to-[#0d0c0b] border border-[#c5a880]/30 flex items-center justify-center text-[#d4af37] shadow-sm">
+          <div className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-750 flex items-center justify-center text-white shadow-sm">
             <span className="font-serif-luxury text-base font-bold tracking-tight">P</span>
           </div>
           <div>
             <div className="flex items-baseline space-x-2.5">
-              <span className="font-serif-luxury text-lg font-bold tracking-[0.24em] text-[#f3e7d3]">
+              <span className="font-serif-luxury text-lg font-bold tracking-[0.24em] text-white">
                 PERPETUA
               </span>
             </div>
-            <p className="text-[9px] tracking-[0.22em] uppercase font-mono text-[#c5a880]/70 hidden sm:block">
+            <p className="text-[9px] tracking-[0.22em] uppercase font-mono text-zinc-400 hidden sm:block">
               Private Rewards Folio · Zero-Credential
             </p>
           </div>
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-2.5">
           {/* Notification Button */}
           {permStatus !== 'granted' ? (
             <button
               onClick={handleEnableAlerts}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/30 text-[#e5d3b3] text-xs font-medium transition cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition cursor-pointer"
             >
-              <Bell className="w-3.5 h-3.5 text-[#d4af37]" />
+              <Bell className="w-3.5 h-3.5 text-zinc-400" />
               <span className="hidden sm:inline">Enable Alerts</span>
               <span className="sm:hidden">Alerts</span>
             </button>
           ) : (
             <button
               onClick={onOpenNotifications}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/25 text-[#e5d3b3] text-xs font-medium transition cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 text-xs font-medium transition cursor-pointer"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span>Protected</span>
             </button>
           )}
@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, onOpenBacku
           {/* Backup Button */}
           <button
             onClick={onOpenBackup}
-            className="p-2 rounded-lg bg-[#141311] hover:bg-[#1a1916] text-[#c5a880]/80 hover:text-[#f3e7d3] border border-[#c5a880]/20 transition cursor-pointer"
+            className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 transition cursor-pointer"
             title="Export / Restore Private Folio"
           >
             <Download className="w-3.5 h-3.5" />
@@ -114,9 +114,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, onOpenBacku
           {!isInstalled && (
             <button
               onClick={handleInstallClick}
-              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/20 text-[#c5a880] text-xs font-medium transition cursor-pointer"
+              className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 text-xs font-medium transition cursor-pointer"
             >
-              <Smartphone className="w-3.5 h-3.5" />
+              <Smartphone className="w-3.5 h-3.5 text-zinc-400" />
               <span>Install Folio</span>
             </button>
           )}
@@ -124,7 +124,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, onOpenBacku
           {/* Add Program Button */}
           <button
             onClick={() => setIsDeckBuilderOpen(true)}
-            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#aa823e] hover:from-[#e5c158] hover:to-[#be9448] text-[#0d0c0a] text-xs font-semibold shadow-md shadow-[#d4af37]/10 transition cursor-pointer active:scale-98"
+            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-white hover:bg-zinc-100 text-zinc-950 text-xs font-semibold shadow-sm transition cursor-pointer active:scale-98"
           >
             <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Add Asset</span>

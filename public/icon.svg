@@ -1,45 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0E0E12" />
-      <stop offset="50%" stop-color="#08080A" />
-      <stop offset="100%" stop-color="#040405" />
+      <stop offset="0%" stop-color="#121215" />
+      <stop offset="50%" stop-color="#09090b" />
+      <stop offset="100%" stop-color="#050506" />
     </linearGradient>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F3E7D3" />
-      <stop offset="35%" stop-color="#D4AF37" />
-      <stop offset="70%" stop-color="#AA823E" />
-      <stop offset="100%" stop-color="#E5D3B3" />
+    <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#E4E4E7" />
+      <stop offset="70%" stop-color="#A1A1AA" />
+      <stop offset="100%" stop-color="#D4D4D8" />
     </linearGradient>
-    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4" />
-      <stop offset="50%" stop-color="#AA823E" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.3" />
+    <linearGradient id="platinumBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E4E4E7" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#71717A" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#E4E4E7" stop-opacity="0.25" />
     </linearGradient>
   </defs>
 
-  <!-- Deep Obsidian Slate Background -->
+  <!-- Deep Obsidian Ceramic Background -->
   <rect width="512" height="512" rx="120" fill="url(#bgGrad)" />
-  <rect x="16" y="16" width="480" height="480" rx="104" fill="none" stroke="url(#goldBorder)" stroke-width="2" />
+  <rect x="16" y="16" width="480" height="480" rx="104" fill="none" stroke="url(#platinumBorder)" stroke-width="1.5" />
 
-  <!-- Outer Fine Geometric Ring -->
-  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.3" />
-  <circle cx="256" cy="256" r="156" fill="none" stroke="url(#goldGrad)" stroke-width="0.75" stroke-opacity="0.2" stroke-dasharray="4 6" />
+  <!-- Outer Fine Geometric Rings (Brushed Platinum) -->
+  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#platinumGrad)" stroke-width="1.5" stroke-opacity="0.25" />
+  <circle cx="256" cy="256" r="156" fill="none" stroke="url(#platinumGrad)" stroke-width="0.75" stroke-opacity="0.15" stroke-dasharray="4 6" />
 
-  <!-- Perpetua Monogram / Timeless Infinity Emblem -->
-  <!-- Classical Roman 'P' intertwined with perpetuity loop -->
+  <!-- Perpetua Monogram Emblem -->
   <path d="M 216 150 L 216 362 M 216 150 L 290 150 C 334 150 354 176 354 216 C 354 256 334 282 290 282 L 216 282" 
         fill="none" 
-        stroke="url(#goldGrad)" 
+        stroke="url(#platinumGrad)" 
         stroke-width="18" 
         stroke-linecap="round" 
         stroke-linejoin="round" />
 
-  <!-- Classical Serif Finials -->
-  <line x1="192" y1="150" x2="240" y2="150" stroke="url(#goldGrad)" stroke-width="10" stroke-linecap="round" />
-  <line x1="192" y1="362" x2="240" y2="362" stroke="url(#goldGrad)" stroke-width="10" stroke-linecap="round" />
+  <!-- Classical Serif Finials in Cool Silver -->
+  <line x1="192" y1="150" x2="240" y2="150" stroke="url(#platinumGrad)" stroke-width="10" stroke-linecap="round" />
+  <line x1="192" y1="362" x2="240" y2="362" stroke="url(#platinumGrad)" stroke-width="10" stroke-linecap="round" />
 
-  <!-- Small Luxury Diamond Star Accent -->
-  <polygon points="256,108 261,120 273,125 261,130 256,142 251,130 239,125 251,120" fill="url(#goldGrad)" />
-  <polygon points="256,370 261,382 273,387 261,392 256,404 251,392 239,387 251,382" fill="url(#goldGrad)" />
+  <!-- Architectural Geometric Accents -->
+  <polygon points="256,108 261,120 273,125 261,130 256,142 251,130 239,125 251,120" fill="url(#platinumGrad)" opacity="0.9" />
+  <polygon points="256,370 261,382 273,387 261,392 256,404 251,392 239,387 251,382" fill="url(#platinumGrad)" opacity="0.9" />
 </svg>

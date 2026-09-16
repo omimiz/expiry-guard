@@ -59,24 +59,24 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-md bg-gradient-to-b from-[#121216] to-[#0a0a0d] border border-[#c5a880]/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
-        {/* Top Accent */}
-        <div className="h-1 w-full bg-gradient-to-r from-[#d4af37] via-[#f3e7d3] to-[#aa823e]" />
+      <div className="relative w-full max-w-md bg-gradient-to-b from-[#121216] to-[#09090b] border border-white/[0.08] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh]">
+        {/* Top Platinum Accent */}
+        <div className="h-1 w-full bg-gradient-to-r from-zinc-500 via-white to-zinc-500" />
 
         {/* Header */}
-        <div className="p-5 border-b border-[#c5a880]/15 flex items-start justify-between bg-[#0e0e12]/80">
+        <div className="p-5 border-b border-zinc-800 flex items-start justify-between bg-zinc-950/70">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#1a1815] border border-[#c5a880]/30 flex items-center justify-center">
-              <FileJson className="w-4 h-4 text-[#d4af37]" />
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+              <FileJson className="w-4 h-4 text-zinc-300" />
             </div>
             <div>
-              <h3 className="text-sm font-serif-luxury font-semibold text-[#f3e7d3]">Private Folio Backup</h3>
+              <h3 className="text-sm font-serif-luxury font-semibold text-white">Private Folio Backup</h3>
               <p className="text-xs text-zinc-400">Zero-credential local storage export & migration</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-500 hover:text-[#f3e7d3] hover:bg-[#1a1916] transition cursor-pointer"
+            className="p-1 rounded-lg text-zinc-500 hover:text-white hover:bg-zinc-800 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -86,7 +86,7 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
         <div className="p-5 space-y-5 overflow-y-auto flex-1">
           {/* Export */}
           <div className="space-y-2.5">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]">
+            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
               Folio Export ({cards.length} Assets)
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed font-sans">
@@ -96,26 +96,26 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
             <div className="flex items-center space-x-2 pt-1">
               <button
                 onClick={handleDownload}
-                className="flex-1 py-2 px-3 rounded-lg bg-gradient-to-r from-[#d4af37] to-[#aa823e] text-[#0d0c0a] text-xs font-semibold transition flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
+                className="flex-1 py-2 px-3 rounded-lg bg-white hover:bg-zinc-100 text-zinc-950 text-xs font-semibold transition flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Export .JSON Folio</span>
+                <span>Export .json Folio</span>
               </button>
               <button
                 onClick={handleCopy}
-                className="py-2 px-3 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/25 text-[#e5d3b3] hover:text-[#f3e7d3] text-xs font-medium transition flex items-center space-x-1.5 cursor-pointer"
+                className="py-2 px-3 rounded-lg bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-300 hover:text-white text-xs font-medium transition flex items-center space-x-1.5 cursor-pointer"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-[#d4af37]" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
           </div>
 
-          <div className="h-px bg-[#c5a880]/15" />
+          <div className="h-px bg-zinc-800" />
 
           {/* Import */}
           <div className="space-y-2.5">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]">
+            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
               Restore Folio
             </div>
 
@@ -123,8 +123,8 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
               <div
                 className={`p-2.5 rounded-lg text-xs font-medium font-mono ${
                   importStatus.success
-                    ? 'bg-[#1b251a] text-emerald-300 border border-emerald-800/40'
-                    : 'bg-[#291414] text-rose-300 border border-rose-800/40'
+                    ? 'bg-emerald-950/40 text-emerald-300 border border-emerald-800/50'
+                    : 'bg-rose-950/40 text-rose-300 border border-rose-800/50'
                 }`}
               >
                 {importStatus.msg}
@@ -132,9 +132,9 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
             )}
 
             <div>
-              <label className="block p-3.5 rounded-xl border border-dashed border-[#c5a880]/20 hover:border-[#c5a880]/40 bg-[#111115] text-center cursor-pointer transition">
-                <Upload className="w-5 h-5 text-[#c5a880]/60 mx-auto mb-1" />
-                <span className="text-xs font-medium text-[#f3e7d3] block">
+              <label className="block p-3.5 rounded-xl border border-dashed border-zinc-800 hover:border-zinc-700 bg-zinc-900/40 text-center cursor-pointer transition">
+                <Upload className="w-5 h-5 text-zinc-500 mx-auto mb-1" />
+                <span className="text-xs font-medium text-zinc-200 block">
                   Select Folio Backup File (.json)
                 </span>
                 <input
@@ -152,12 +152,12 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
                 onChange={(e) => setImportText(e.target.value)}
                 placeholder="Or paste folio JSON code directly here..."
                 rows={2}
-                className="w-full p-2.5 rounded-xl bg-[#101013] border border-[#c5a880]/20 text-xs text-[#f3e7d3] font-mono placeholder-zinc-500 focus:outline-none focus:border-[#d4af37]/60"
+                className="w-full p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-xs text-white font-mono placeholder-zinc-500 focus:outline-none focus:border-zinc-600"
               />
               {importText && (
                 <button
                   onClick={() => executeImport(importText)}
-                  className="mt-1.5 w-full py-1.5 rounded-lg bg-[#1a1815] hover:bg-[#221f1a] text-xs font-medium text-[#e5d3b3] border border-[#c5a880]/30 transition cursor-pointer"
+                  className="mt-1.5 w-full py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-750 text-xs font-medium text-zinc-200 transition cursor-pointer"
                 >
                   Load Folio
                 </button>
@@ -167,7 +167,7 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#c5a880]/15 bg-[#0a0a0d] flex items-center justify-between">
+        <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex items-center justify-between">
           <button
             onClick={() => {
               if (confirm('Clear all assets from local folio?')) {
@@ -180,7 +180,7 @@ export const BackupModal: React.FC<BackupModalProps> = ({ isOpen, onClose }) => 
           </button>
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/20 text-xs font-medium text-[#c5a880] hover:text-[#f3e7d3] transition cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-400 hover:text-white transition cursor-pointer"
           >
             Close
           </button>

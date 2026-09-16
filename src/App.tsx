@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
   const [isBackupOpen, setIsBackupOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#08080a] text-zinc-100 flex flex-col selection:bg-[#d4af37]/30 selection:text-[#f3e7d3] antialiased">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-zinc-800 selection:text-white antialiased">
       {/* App Header */}
       <Header
         onOpenNotifications={() => setIsNotificationsOpen(true)}
@@ -43,10 +43,10 @@ const AppContent: React.FC = () => {
       </main>
 
       {/* Private Banking Confidentiality Footer */}
-      <footer className="border-t border-[#c5a880]/15 bg-[#060608] mt-16 py-6 text-xs text-zinc-500">
+      <footer className="border-t border-zinc-850 bg-[#060608] mt-16 py-6 text-xs text-zinc-500">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center space-x-2 text-[#c5a880]/80">
-            <Shield className="w-3.5 h-3.5 text-[#d4af37]" />
+          <div className="flex items-center space-x-2 text-zinc-400">
+            <Shield className="w-3.5 h-3.5 text-zinc-300" />
             <span className="font-mono text-[11px]">
               PERPETUA PRIVATE CLIENT · Zero-Credential Architecture
             </span>
