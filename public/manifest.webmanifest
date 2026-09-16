@@ -1,14 +1,14 @@
 {
-  "name": "ExpiryGuard — Loyalty Loss Prevention",
-  "short_name": "ExpiryGuard",
-  "description": "Zero-credential loyalty points expiration tracker and proactive rewards loss prevention wallet.",
+  "name": "Perpetua — Private Rewards Folio",
+  "short_name": "Perpetua",
+  "description": "Bespoke loyalty asset preservation for high-net-worth individuals. Zero-credential point decay tracking and capital retention.",
   "start_url": "/",
   "id": "/",
   "display": "standalone",
-  "background_color": "#090d16",
-  "theme_color": "#090d16",
+  "background_color": "#08080a",
+  "theme_color": "#08080a",
   "orientation": "portrait-primary",
-  "categories": ["finance", "utilities", "travel", "productivity"],
+  "categories": ["finance", "lifestyle", "travel"],
   "icons": [
     {
       "src": "/icon.svg",
@@ -24,4 +24,3 @@
     }
   ]
 }
-

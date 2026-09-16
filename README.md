@@ -1,85 +1,40 @@
-# 🛡️ ExpiryGuard — Loyalty & Rewards Loss Prevention PWA
+# 🏛️ PERPETUA — Private Rewards Folio
 
-> **Zero-integration, zero-credential loyalty tracking web app & Progressive Web App (PWA).**  
-> Users never link logins or risk credentials. ExpiryGuard calculates real-time point expiration dates using deterministic program decay rules and fires proactive reminders showing exactly how to rescue points before they vanish.
-
----
-
-## ✨ Key Features
-
-* **🛡️ Zero Credentials & Zero Tracking:** No bank logins, passwords, or account numbers required. 100% private and local-first in your browser.
-* **⚡ 60-Second Onboarding ("Deck Builder"):** Rapidly curate your card deck with 1-click presets (*Within 30 days*, *3–6 months*, *1 year ago*, or *Pick exact date*) and pre-configured starter packs.
-* **📱 Apple Wallet Pass Aesthetics:** Sleek, mobile-first card deck interface with dynamic airline/hotel brand gradients, urgency badges, and tactile tactile visual cues.
-* **🔄 "I Used This Card" 1-Tap Reset:** Logged a flight or bought groceries? Tap once to immediately reset your expiration clock to today and trigger celebration effects.
-* **🛟 Actionable "Quick Rescue" Guides:** Specific, high-yield maneuvers tailored to each loyalty scheme (e.g. *Transfer 1,000 Amex points*, *Link Lyft with Hilton*, *Dine via Marriott Eat Around Town*, *Buy a $3 Sephora item*).
-* **⏰ Autonomous Reminder Cadence:** Proactive notifications scheduled at **60 days**, **14 days**, and **48 hours** before point forfeiture.
-* **📲 Installable PWA with Offline Support:** Works offline via custom Service Worker caching and installs seamlessly to iOS and Android home screens.
-* **💾 Local-First Backup & Sync:** One-click JSON export and restore for effortless migration across your devices.
+> **Bespoke loyalty asset preservation for high-net-worth individuals.**  
+> Zero-credential capital tracking for global airline miles, elite hotel points, and private concierge rewards. Calculated deterministically using public program decay mathematics.
 
 ---
 
-## 🏛️ Supported Loyalty Catalog
+## ✨ Features for Private Clients
 
-Pre-seeded with public expiration decay rules and rescue actions across major global programs:
-
-| Program | Category | Decay Policy | Validity Window |
-|---|---|---|---|
-| **Emirates Skywards** | Airlines | Fixed Tenure | 36 Months |
-| **Marriott Bonvoy** | Hotels | Rolling Inactivity | 24 Months |
-| **Hilton Honors** | Hotels | Rolling Inactivity | 24 Months |
-| **Starbucks Rewards** | Dining | Rolling Inactivity | 6 Months |
-| **Carrefour SHARE** | Retail | Fixed Calendar | Dec 31 End of Year |
-| **Air France / KLM Flying Blue** | Airlines | Rolling Inactivity | 24 Months |
-| **Qatar Airways Privilege Club** | Airlines | Rolling Inactivity | 36 Months |
-| **British Airways Executive Club** | Airlines | Rolling Inactivity | 36 Months |
-| **World of Hyatt** | Hotels | Rolling Inactivity | 24 Months |
-| **Singapore Airlines KrisFlyer** | Airlines | Fixed Tenure | 36 Months |
-| **IHG One Rewards** | Hotels | Rolling Inactivity | 12 Months |
-| **Sephora Beauty Insider** | Retail | Rolling Inactivity | 12 Months |
-| **Delta SkyMiles** | Airlines | Immortal | Never Expires |
-| **Amex Membership Rewards** | Credit Card | Active Account | Never Expires |
-
-*Users can also create custom loyalty schemes with custom decay windows and policies.*
+* **🛡️ Zero Credentials & Discretion:** No logins, bank links, or credentials ever transmitted or stored. Everything runs strictly in sovereign browser memory.
+* **📈 Portfolio Valuation:** Live capital tracking across sovereign aviation and luxury hospitality programs with real-time redemption valuation.
+* **🔄 Renew Validity (1-Tap):** Log recent qualifying activities with a single gesture to extend your asset retention cycles.
+* **🛟 Capital Preservation Maneuvers:** Bespoke retention strategies tailored to each loyalty scheme (partner transfers, concierge spend, family pooling).
+* **⏰ Autonomous Cadence Reminders:** Discreet alerts dispatched at **60 days**, **14 days**, and **48 hours** prior to capital forfeiture.
+* **📲 Sovereign PWA:** Offline-first architecture installable directly to iOS and Android devices.
+* **💾 Private Folio Export:** Offline JSON backup to migrate securely between personal devices.
 
 ---
 
-## 🛠️ Tech Stack
+## 🏛️ Monitored Global Schemes
 
-* **Framework:** [React 18](https://react.dev/) + [Vite](https://vite.dev/) + [TypeScript](https://www.typescriptlang.org/)
-* **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) with custom Apple Wallet pass gradients and glassmorphism
-* **Icons:** [Lucide React](https://lucide.dev/)
-* **Animations & Effects:** [canvas-confetti](https://github.com/catdad/canvas-confetti)
-* **PWA & Offline:** Web App Manifest (`manifest.webmanifest`), Service Worker (`sw.js`) with cache-first static strategy and Web Push handlers
-* **Persistence:** `localStorage` with JSON export/import
+* **Aviation:** Emirates Skywards, Qatar Airways Privilege Club, Singapore Airlines KrisFlyer, British Airways Executive Club, Air France / KLM Flying Blue, Delta SkyMiles.
+* **Luxury Hospitality:** World of Hyatt, Marriott Bonvoy, Hilton Honors, IHG One Rewards.
+* **Cards & Concierge:** American Express Centurion / Membership Rewards, Starbucks Reserve, Carrefour SHARE, Sephora Beauty Insider.
 
 ---
 
-## 🚀 Quickstart
+## 🛠️ Technology Architecture
 
-### 1. Clone & Install
-```bash
-git clone https://github.com/omimiz/expiry-guard.git
-cd expiry-guard
-npm install
-```
-
-### 2. Run Local Development Server
-```bash
-npm run dev
-```
-
-### 3. Run Calculation Engine Sanity Tests
-```bash
-npx tsx src/utils/calculator.test.ts
-```
-
-### 4. Build for Production
-```bash
-npm run build
-```
+* **Engine:** React 18, Vite, TypeScript, Tailwind CSS v4
+* **Typography:** Classical Roman & Swiss Editorial typography
+* **PWA:** Web App Manifest, Service Worker offline caching, Local Web Push API
+* **Security:** Local-first storage with zero telemetry or tracking
 
 ---
 
-## 📄 License
+## 🚀 Deployment
 
-MIT License. Designed with privacy and user ownership at heart.
+- **Live Production:** [https://expiry-guard-six.vercel.app](https://expiry-guard-six.vercel.app)
+- **Repository:** [https://github.com/omimiz/expiry-guard](https://github.com/omimiz/expiry-guard)

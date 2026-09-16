@@ -1,42 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16" />
-      <stop offset="50%" stop-color="#111827" />
-      <stop offset="100%" stop-color="#030712" />
+      <stop offset="0%" stop-color="#0E0E12" />
+      <stop offset="50%" stop-color="#08080A" />
+      <stop offset="100%" stop-color="#040405" />
     </linearGradient>
-    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B" />
-      <stop offset="35%" stop-color="#F43F5E" />
-      <stop offset="100%" stop-color="#6366F1" />
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E7D3" />
+      <stop offset="35%" stop-color="#D4AF37" />
+      <stop offset="70%" stop-color="#AA823E" />
+      <stop offset="100%" stop-color="#E5D3B3" />
     </linearGradient>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#AA823E" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.3" />
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="20" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
   </defs>
 
-  <!-- Background rounded rect -->
-  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  <!-- Deep Obsidian Slate Background -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="480" height="480" rx="104" fill="none" stroke="url(#goldBorder)" stroke-width="2" />
 
-  <!-- Outer ambient glow -->
-  <path d="M256 64 C352 64 416 112 416 224 C416 352 288 432 256 448 C224 432 96 352 96 224 C96 112 160 64 256 64 Z" fill="url(#shieldGrad)" opacity="0.25" filter="url(#glow)" />
+  <!-- Outer Fine Geometric Ring -->
+  <circle cx="256" cy="256" r="168" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.3" />
+  <circle cx="256" cy="256" r="156" fill="none" stroke="url(#goldGrad)" stroke-width="0.75" stroke-opacity="0.2" stroke-dasharray="4 6" />
 
-  <!-- Shield Body -->
-  <path d="M256 80 C340 80 396 122 396 224 C396 340 284 414 256 428 C228 414 116 340 116 224 C116 122 172 80 256 80 Z" fill="url(#shieldGrad)" />
+  <!-- Perpetua Monogram / Timeless Infinity Emblem -->
+  <!-- Classical Roman 'P' intertwined with perpetuity loop -->
+  <path d="M 216 150 L 216 362 M 216 150 L 290 150 C 334 150 354 176 354 216 C 354 256 334 282 290 282 L 216 282" 
+        fill="none" 
+        stroke="url(#goldGrad)" 
+        stroke-width="18" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
 
-  <!-- Card Pass silhouette overlay -->
-  <rect x="180" y="150" width="152" height="100" rx="14" fill="url(#cardGrad)" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="3" />
-  <circle cx="210" cy="185" r="12" fill="#FFFFFF" fill-opacity="0.6" />
-  <line x1="235" y1="180" x2="310" y2="180" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" />
-  <line x1="235" y1="192" x2="285" y2="192" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round" />
+  <!-- Classical Serif Finials -->
+  <line x1="192" y1="150" x2="240" y2="150" stroke="url(#goldGrad)" stroke-width="10" stroke-linecap="round" />
+  <line x1="192" y1="362" x2="240" y2="362" stroke="url(#goldGrad)" stroke-width="10" stroke-linecap="round" />
 
-  <!-- Checkmark / Clock dial in shield -->
-  <circle cx="256" cy="300" r="44" fill="#090D16" fill-opacity="0.8" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="4" />
-  <path d="M256 276 V302 L274 314" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Small Luxury Diamond Star Accent -->
+  <polygon points="256,108 261,120 273,125 261,130 256,142 251,130 239,125 251,120" fill="url(#goldGrad)" />
+  <polygon points="256,370 261,382 273,387 261,392 256,404 251,392 239,387 251,382" fill="url(#goldGrad)" />
 </svg>
-

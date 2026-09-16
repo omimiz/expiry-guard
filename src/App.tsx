@@ -9,7 +9,7 @@ import { CustomCardModal } from './components/CustomCardModal'
 import { EditCardModal } from './components/EditCardModal'
 import { NotificationModal } from './components/NotificationModal'
 import { BackupModal } from './components/BackupModal'
-import { Lock } from 'lucide-react'
+import { Shield } from 'lucide-react'
 
 const AppContent: React.FC = () => {
   const {
@@ -26,7 +26,7 @@ const AppContent: React.FC = () => {
   const [isBackupOpen, setIsBackupOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-zinc-800 selection:text-white antialiased">
+    <div className="min-h-screen bg-[#08080a] text-zinc-100 flex flex-col selection:bg-[#d4af37]/30 selection:text-[#f3e7d3] antialiased">
       {/* App Header */}
       <Header
         onOpenNotifications={() => setIsNotificationsOpen(true)}
@@ -35,24 +35,26 @@ const AppContent: React.FC = () => {
 
       {/* Main Container */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
-        {/* Metric Aggregates & Filters */}
+        {/* Portfolio Aggregates & Category Selectors */}
         <SummaryBanner />
 
         {/* The Card Deck / Grid */}
         <WalletDeck />
       </main>
 
-      {/* Minimal Footer */}
-      <footer className="border-t border-zinc-800/60 bg-[#09090b] mt-16 py-6 text-xs text-zinc-500">
+      {/* Private Banking Confidentiality Footer */}
+      <footer className="border-t border-[#c5a880]/15 bg-[#060608] mt-16 py-6 text-xs text-zinc-500">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center space-x-2">
-            <Lock className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Zero-Credential Architecture · No logins or passwords stored.</span>
+          <div className="flex items-center space-x-2 text-[#c5a880]/80">
+            <Shield className="w-3.5 h-3.5 text-[#d4af37]" />
+            <span className="font-mono text-[11px]">
+              PERPETUA PRIVATE CLIENT · Zero-Credential Architecture
+            </span>
           </div>
-          <div className="flex items-center space-x-3 text-[11px] text-zinc-400">
-            <span>Deterministic Decay Rules</span>
+          <div className="flex items-center space-x-3 text-[11px] text-zinc-500 font-mono">
+            <span>Deterministic Decay Modeling</span>
             <span>·</span>
-            <span>Local-First PWA</span>
+            <span>Local-First Sovereign PWA</span>
           </div>
         </div>
       </footer>

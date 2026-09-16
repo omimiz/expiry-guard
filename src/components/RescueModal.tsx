@@ -3,7 +3,8 @@ import confetti from 'canvas-confetti'
 import {
   X,
   Check,
-  Coins
+  Coins,
+  ShieldCheck
 } from 'lucide-react'
 import type { UserCard, LoyaltyProgram, EffortLevel } from '../types'
 import { LOYALTY_CATALOG } from '../data/loyaltyCatalog'
@@ -23,18 +24,18 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
   const program: LoyaltyProgram | undefined = LOYALTY_CATALOG.find((p) => p.id === card.programId)
   const expiry = calculateExpiry(card, program)
 
-  const programName = program?.name || card.customProgramName || 'Loyalty Card'
-  const brandColor = program?.brandColor || '#71717a'
+  const programName = program?.name || card.customProgramName || 'Loyalty Scheme'
+  const brandColor = program?.brandColor || '#c5a880'
   const valCents = program?.valuationPerPointCents || 1.0
   const valuation = calculateBalanceValuation(card.approxBalance || 0, valCents)
   const pointUnit = program?.pointUnit || 'Points'
 
   const handleRescueActionCompleted = (_actionTitle: string) => {
     confetti({
-      particleCount: 35,
-      spread: 45,
+      particleCount: 45,
+      spread: 55,
       origin: { y: 0.7 },
-      colors: ['#a1a1aa', '#f4f4f5']
+      colors: ['#D4AF37', '#F3E7D3', '#AA823E']
     })
     resetActivityClock(card.id)
     onClose()
@@ -44,123 +45,127 @@ export const RescueModal: React.FC<RescueModalProps> = ({ card, onClose }) => {
     switch (effort) {
       case 'instant_free':
         return (
-          <span className="text-[10px] font-medium text-emerald-400 bg-emerald-950/40 border border-emerald-800/40 px-2 py-0.5 rounded-md">
-            Free & Instant
+          <span className="text-[10px] font-mono text-[#d4af37] bg-[#221c12] border border-[#c5a880]/30 px-2 py-0.5 rounded">
+            Zero Cost · Instant
           </span>
         )
       case 'low_cost':
         return (
-          <span className="text-[10px] font-medium text-amber-400 bg-amber-950/40 border border-amber-800/40 px-2 py-0.5 rounded-md">
-            Low Cost ($1–$5)
+          <span className="text-[10px] font-mono text-zinc-300 bg-zinc-900 border border-zinc-700/60 px-2 py-0.5 rounded">
+            Nominal Spend ($1–$5)
           </span>
         )
       case 'transfer':
         return (
-          <span className="text-[10px] font-medium text-cyan-400 bg-cyan-950/40 border border-cyan-800/40 px-2 py-0.5 rounded-md">
-            Points Transfer
+          <span className="text-[10px] font-mono text-[#f3e7d3] bg-[#1a1815] border border-[#c5a880]/40 px-2 py-0.5 rounded">
+            Capital Transfer
           </span>
         )
       case 'partner':
         return (
-          <span className="text-[10px] font-medium text-zinc-300 bg-zinc-800/80 border border-zinc-700/60 px-2 py-0.5 rounded-md">
-            Partner Earn
+          <span className="text-[10px] font-mono text-[#c5a880] bg-[#161512] border border-[#c5a880]/25 px-2 py-0.5 rounded">
+            Concierge & Partner
           </span>
         )
     }
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-[#111114] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        {/* Header */}
-        <div className="p-5 sm:p-6 border-b border-zinc-800/80 flex items-start justify-between">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-gradient-to-b from-[#121216] to-[#0a0a0d] border border-[#c5a880]/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        {/* Top Hairline Gold Accent */}
+        <div className="h-1 w-full bg-gradient-to-r from-[#d4af37] via-[#f3e7d3] to-[#aa823e]" />
+
+        {/* Advisory Header */}
+        <div className="p-6 border-b border-[#c5a880]/15 flex items-start justify-between bg-[#0e0e12]/80">
           <div>
             <div className="flex items-center space-x-2 mb-1.5">
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: brandColor }} />
-              <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
-                {programName}
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: brandColor }} />
+              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]">
+                Perpetua Advisory · Capital Retention
               </span>
             </div>
-            <h2 className="text-xl font-semibold text-white tracking-tight">
-              Preserve {(card.approxBalance || 0).toLocaleString()} {pointUnit}
+            <h2 className="text-xl sm:text-2xl font-serif-luxury font-bold text-[#f3e7d3] tracking-tight">
+              Safeguard {(card.approxBalance || 0).toLocaleString()} {pointUnit}
             </h2>
             <p className="text-xs text-zinc-400 mt-1">
-              Estimated value ≈ <strong className="text-zinc-200">{valuation}</strong> · {expiry.statusText} ({expiry.formattedDate})
+              Estimated asset value ≈ <strong className="text-[#f3e7d3]">{valuation}</strong> · {programName} ({expiry.formattedDate})
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800 transition cursor-pointer"
+            className="p-1 rounded-lg text-zinc-500 hover:text-[#f3e7d3] hover:bg-[#1a1916] transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Rescue Actions List */}
-        <div className="p-5 sm:p-6 space-y-3.5 overflow-y-auto flex-1">
-          <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400 mb-1">
-            Recommended Rescue Actions
+        {/* Preservation Strategy List */}
+        <div className="p-6 space-y-4 overflow-y-auto flex-1">
+          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c5a880]/80 mb-1 flex items-center space-x-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#d4af37]" />
+            <span>Preservation Maneuvers</span>
           </div>
 
           {program && program.rescueActions.length > 0 ? (
             program.rescueActions.map((action, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700/80 transition space-y-2"
+                className="p-4 rounded-xl bg-[#111115] border border-[#c5a880]/15 hover:border-[#c5a880]/35 transition space-y-2.5"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-zinc-100">
+                  <span className="text-xs font-serif-luxury font-semibold text-[#f3e7d3]">
                     {action.title}
                   </span>
                   {getEffortTag(action.effort)}
                 </div>
 
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-xs text-zinc-300 leading-relaxed font-sans">
                   {action.description}
                 </p>
 
                 {action.partnerExample && (
-                  <div className="text-[11px] text-zinc-400">
-                    Partner: <span className="text-zinc-300">{action.partnerExample}</span>
+                  <div className="text-[11px] text-zinc-400 font-mono">
+                    Channel: <span className="text-[#e5d3b3]">{action.partnerExample}</span>
                   </div>
                 )}
 
-                <div className="pt-2 border-t border-zinc-800/60 flex items-center justify-between">
-                  <span className="text-[11px] text-zinc-400">
-                    {action.actionHint || 'Resets validity period'}
+                <div className="pt-2.5 border-t border-[#c5a880]/10 flex items-center justify-between">
+                  <span className="text-[11px] text-[#c5a880]/80">
+                    {action.actionHint || 'Extends full retention cycle'}
                   </span>
                   <button
                     onClick={() => handleRescueActionCompleted(action.title)}
-                    className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white text-xs font-medium border border-zinc-700/60 transition flex items-center space-x-1.5 cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-[#1a1815] hover:bg-[#24211c] text-[#f3e7d3] hover:text-white text-xs font-medium border border-[#c5a880]/30 transition flex items-center space-x-1.5 cursor-pointer"
                   >
-                    <Check className="w-3 h-3 text-emerald-400" />
-                    <span>Done, reset clock</span>
+                    <Check className="w-3 h-3 text-[#d4af37]" />
+                    <span>Execute & Renew Validity</span>
                   </button>
                 </div>
               </div>
             ))
           ) : (
             <div className="p-6 text-center text-xs text-zinc-400 space-y-2">
-              <Coins className="w-6 h-6 text-zinc-500 mx-auto" />
-              <p>Complete any qualifying activity with this program to extend points.</p>
+              <Coins className="w-6 h-6 text-[#d4af37] mx-auto" />
+              <p>Trigger any qualifying earning or transfer transaction to renew this asset's validity.</p>
               <button
                 onClick={() => handleRescueActionCompleted('Activity')}
-                className="px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-200 text-xs font-medium mt-2"
+                className="px-4 py-2 rounded-lg bg-[#1a1815] border border-[#c5a880]/30 text-[#f3e7d3] text-xs font-medium mt-2"
               >
-                Reset Clock
+                Renew Validity
               </button>
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-zinc-800/80 bg-zinc-950 flex items-center justify-between">
-          <span className="text-[11px] text-zinc-400">
-            Deterministic rules · Zero credentials
+        <div className="p-4 border-t border-[#c5a880]/15 bg-[#0a0a0d] flex items-center justify-between text-[11px] text-zinc-400">
+          <span>
+            Deterministic rules · Zero credential transmission
           </span>
           <button
             onClick={onClose}
-            className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-medium text-zinc-300 hover:text-white transition cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-[#141311] hover:bg-[#1a1916] border border-[#c5a880]/20 text-[#e5d3b3] text-xs font-medium transition cursor-pointer"
           >
             Close
           </button>

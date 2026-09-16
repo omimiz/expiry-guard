@@ -2,9 +2,11 @@
 
 @layer base {
   :root {
-    --bg-page: #09090b;
-    --card-bg: #121215;
-    --card-border: rgba(255, 255, 255, 0.08);
+    --bg-obsidian: #08080a;
+    --gold-primary: #d4af37;
+    --gold-light: #f3e7d3;
+    --gold-muted: #aa823e;
+    --gold-border: rgba(212, 175, 55, 0.2);
   }
 }
 
@@ -12,12 +14,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #09090b;
+  background-color: #08080a;
   color: #f4f4f5;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Classical luxury serif helper */
+.font-serif-luxury {
+  font-family: "Didot", "Bodoni MT", "Cinzel", "Playfair Display", "Times New Roman", Georgia, serif;
 }
 
 /* Minimal subtle scrollbars */
@@ -26,22 +33,21 @@ body {
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #08080a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #1f1f23;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #2e2e33;
 }
 
-/* Restrained card surface */
-.card-surface {
-  background-color: #111114;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+/* Luxury card gold sheen */
+.gold-sheen {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.02) 100%);
 }
 
-.card-surface:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+.gold-border {
+  border-color: rgba(212, 175, 55, 0.18);
 }
