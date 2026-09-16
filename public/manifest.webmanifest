@@ -1,0 +1,26 @@
+{
+  "name": "ExpiryGuard — Loyalty Loss Prevention",
+  "short_name": "ExpiryGuard",
+  "description": "Zero-credential loyalty points expiration tracker and proactive rewards loss prevention wallet.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "utilities", "travel", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

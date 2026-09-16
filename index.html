@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ExpiryGuard — Loyalty & Rewards Loss Prevention</title>
+    <meta name="description" content="Zero-integration, zero-credential loyalty tracking PWA. Deterministic decay rules, countdown timers, and proactive point rescue guides." />
+    
+    <!-- PWA & Mobile Meta Tags -->
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#090d16" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ExpiryGuard" />
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('ExpiryGuard SW registered:', reg.scope))
+            .catch((err) => console.warn('ExpiryGuard SW registration failed:', err))
+        })
+      }
+    </script>
+  </body>
+</html>
